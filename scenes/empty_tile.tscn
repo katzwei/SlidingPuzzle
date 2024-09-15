@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://2rp3m4kv7bdv"]
+
+[ext_resource type="Texture2D" uid="uid://cub3hsudkoyak" path="res://assets/cursor.png" id="1_oeilr"]
+[ext_resource type="Script" path="res://scripts/empty_tile.gd" id="1_ypoyl"]
+
+[node name="EmptyTile" type="Node2D"]
+script = ExtResource("1_ypoyl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_oeilr")
+
+[node name="RayCastBottom" type="RayCast2D" parent="."]
+target_position = Vector2(0, 128)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+rotation = -1.5708
+target_position = Vector2(0, 128)
+
+[node name="RayCastTop" type="RayCast2D" parent="."]
+rotation = 3.14159
+target_position = Vector2(0, 128)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+rotation = 1.5708
+target_position = Vector2(0, 128)

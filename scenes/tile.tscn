@@ -1,0 +1,145 @@
+[gd_scene load_steps=20 format=3 uid="uid://cge4lsokkt3cn"]
+
+[ext_resource type="Texture2D" uid="uid://bvdbg6m6rx4fu" path="res://assets/spritesheet_tiles.png" id="1_kvg25"]
+[ext_resource type="Script" path="res://scripts/tile.gd" id="1_omfxe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1gpj"]
+atlas = ExtResource("1_kvg25")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c32b"]
+atlas = ExtResource("1_kvg25")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2eie"]
+atlas = ExtResource("1_kvg25")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l878m"]
+atlas = ExtResource("1_kvg25")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3ole"]
+atlas = ExtResource("1_kvg25")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdx5q"]
+atlas = ExtResource("1_kvg25")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nf8ay"]
+atlas = ExtResource("1_kvg25")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55ftn"]
+atlas = ExtResource("1_kvg25")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmhxd"]
+atlas = ExtResource("1_kvg25")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbriu"]
+atlas = ExtResource("1_kvg25")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mk27r"]
+atlas = ExtResource("1_kvg25")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gd1ff"]
+atlas = ExtResource("1_kvg25")
+region = Rect2(384, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ro4pr"]
+atlas = ExtResource("1_kvg25")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kikx8"]
+atlas = ExtResource("1_kvg25")
+region = Rect2(128, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttfrm"]
+atlas = ExtResource("1_kvg25")
+region = Rect2(256, 384, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vtvu5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1gpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c32b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2eie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l878m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3ole")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdx5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nf8ay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55ftn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmhxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbriu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mk27r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gd1ff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ro4pr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kikx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttfrm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75l1k"]
+size = Vector2(128, 128)
+
+[node name="Tile" type="AnimatableBody2D"]
+script = ExtResource("1_omfxe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vtvu5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_75l1k")
+
+[node name="Origin" type="Marker2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "ORIGIN"

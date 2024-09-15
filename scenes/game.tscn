@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://c62krub3irbik"]
+
+[ext_resource type="PackedScene" uid="uid://dtdxe2taku8d8" path="res://scenes/board.tscn" id="1_ilxur"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_rte3e"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_rte3e")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Board" parent="Panel/CenterContainer" instance=ExtResource("1_ilxur")]
+unique_name_in_owner = true
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+offset_left = 957.0
+offset_top = 537.0
+offset_right = 1142.0
+offset_bottom = 638.0
+metadata/_edit_group_ = true
+
+[node name="Easy" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "EASY
+"
+
+[node name="Normal" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "NORMAL
+"
+
+[node name="Hard" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "HARD
+"
+
+[connection signal="pressed" from="Buttons/Easy" to="." method="_on_easy_pressed"]
+[connection signal="pressed" from="Buttons/Normal" to="." method="_on_normal_pressed"]
+[connection signal="pressed" from="Buttons/Hard" to="." method="_on_hard_pressed"]
