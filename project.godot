@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Debug="*res://singletons/debug.gd"
-Global="*res://scripts/global.gd"
+Global="*res://singletons/global.gd"
 
 [editor]
 

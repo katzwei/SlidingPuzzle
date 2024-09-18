@@ -48,6 +48,7 @@ layout_mode = 2
 text = "HARD
 "
 
+[connection signal="solved" from="Panel/CenterContainer/Board" to="." method="_on_board_solved"]
 [connection signal="pressed" from="Buttons/Easy" to="." method="_on_easy_pressed"]
 [connection signal="pressed" from="Buttons/Normal" to="." method="_on_normal_pressed"]
 [connection signal="pressed" from="Buttons/Hard" to="." method="_on_hard_pressed"]

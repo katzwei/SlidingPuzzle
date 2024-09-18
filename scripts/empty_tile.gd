@@ -2,13 +2,13 @@ class_name EmptyTile
 extends Node2D
 
 var last_action := ""
-
 var action_raycast_dicitonary := {
 	"move_up": "RayCastBottom",
 	"move_right": "RayCastLeft",
 	"move_down": "RayCastTop",
 	"move_left": "RayCastRight"
 }
+
 
 func aim_at_and_move_tile(raycast_path: String) -> void:
 	var raycast_node: RayCast2D = get_node(raycast_path)
@@ -17,6 +17,7 @@ func aim_at_and_move_tile(raycast_path: String) -> void:
 		var old_position = tile.origin.global_position
 		tile.move(global_position)
 		global_position = old_position
+
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
