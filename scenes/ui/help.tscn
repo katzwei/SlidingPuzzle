@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5rnyv7trml80"]
+
+[ext_resource type="Script" path="res://scripts/ui/help.gd" id="1_mirxs"]
+
+[node name="Help" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mirxs")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/CenterContainer"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][u]how to play[/u]
+think fast and solve the puzzle in as few move as you can!
+
+[u]controls[/u]
+[b]up arrow[/b] [i]or[/i] [b]W[/b]
+[b]right arrow[/b] [i]or[/i] [b]A[/b]
+[b]down arrow[/b] [i]or[/i] [b]S[/b]
+[b]left arrow[/b] [i]or[/i] [b]D[/b][/center]"
+
+[node name="CenterContainerBack" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/CenterContainerBack"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 10
+
+[node name="ButtonBack" type="Button" parent="PanelContainer/CenterContainerBack/MarginContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "BACK"
+
+[connection signal="pressed" from="PanelContainer/CenterContainerBack/MarginContainer/ButtonBack" to="." method="_on_button_back_pressed"]

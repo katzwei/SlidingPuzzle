@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c62krub3irbik"]
+[gd_scene load_steps=6 format=3 uid="uid://c62krub3irbik"]
 
 [ext_resource type="PackedScene" uid="uid://dtdxe2taku8d8" path="res://scenes/puzzle/board.tscn" id="1_ilxur"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_rte3e"]
+[ext_resource type="PackedScene" uid="uid://b5cvuk4mhgfsq" path="res://scenes/ui/move_counter.tscn" id="3_hdl14"]
+[ext_resource type="PackedScene" uid="uid://0an6p1c52dhv" path="res://scenes/ui/difficulty_select.tscn" id="3_tjejp"]
+[ext_resource type="PackedScene" uid="uid://d2ds005c46bpw" path="res://scenes/ui/game_timer.tscn" id="4_4y1dm"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_rte3e")
@@ -26,29 +29,27 @@ grow_vertical = 2
 [node name="Board" parent="Panel/CenterContainer" instance=ExtResource("1_ilxur")]
 unique_name_in_owner = true
 
-[node name="Buttons" type="VBoxContainer" parent="."]
-offset_left = 957.0
-offset_top = 537.0
-offset_right = 1142.0
-offset_bottom = 638.0
-metadata/_edit_group_ = true
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
 
-[node name="Easy" type="Button" parent="Buttons"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
-text = "EASY
-"
+theme_override_constants/separation = 40
 
-[node name="Normal" type="Button" parent="Buttons"]
+[node name="MoveCounter" parent="Panel/MarginContainer/VBoxContainer" instance=ExtResource("3_hdl14")]
+unique_name_in_owner = true
 layout_mode = 2
-text = "NORMAL
-"
 
-[node name="Hard" type="Button" parent="Buttons"]
+[node name="Timer" parent="Panel/MarginContainer/VBoxContainer" instance=ExtResource("4_4y1dm")]
+unique_name_in_owner = true
 layout_mode = 2
-text = "HARD
-"
+
+[node name="DifficultySelect" parent="." instance=ExtResource("3_tjejp")]
 
 [connection signal="solved" from="Panel/CenterContainer/Board" to="." method="_on_board_solved"]
-[connection signal="pressed" from="Buttons/Easy" to="." method="_on_easy_pressed"]
-[connection signal="pressed" from="Buttons/Normal" to="." method="_on_normal_pressed"]
-[connection signal="pressed" from="Buttons/Hard" to="." method="_on_hard_pressed"]
+[connection signal="select_easy" from="DifficultySelect" to="." method="_on_difficulty_select_select_easy"]
+[connection signal="select_hard" from="DifficultySelect" to="." method="_on_difficulty_select_select_hard"]
+[connection signal="select_normal" from="DifficultySelect" to="." method="_on_difficulty_select_select_normal"]

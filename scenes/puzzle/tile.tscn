@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://cge4lsokkt3cn"]
 
 [ext_resource type="Texture2D" uid="uid://bvdbg6m6rx4fu" path="res://assets/spritesheet_tiles.png" id="1_kvg25"]
-[ext_resource type="Script" path="res://scripts/tile.gd" id="1_omfxe"]
+[ext_resource type="Script" path="res://scripts/puzzle/tile.gd" id="1_omfxe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n1gpj"]
 atlas = ExtResource("1_kvg25")

@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwek1i3if2hsi"]
+
+[ext_resource type="Script" path="res://scripts/ui/start.gd" id="1_v28r7"]
+
+[node name="Start" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v28r7")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainerTitle" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/CenterContainerTitle"]
+layout_mode = 2
+theme_override_constants/margin_top = 200
+
+[node name="LabelTitle" type="Label" parent="PanelContainer/CenterContainerTitle/MarginContainer"]
+layout_mode = 2
+text = "a sliding puzzle game"
+
+[node name="CenterContainerButtons" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainerButtons"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="ButtonPlay" type="Button" parent="PanelContainer/CenterContainerButtons/VBoxContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="ButtonHelp" type="Button" parent="PanelContainer/CenterContainerButtons/VBoxContainer"]
+layout_mode = 2
+text = "HELP"
+
+[node name="ButtonQuit" type="Button" parent="PanelContainer/CenterContainerButtons/VBoxContainer"]
+layout_mode = 2
+text = "QUIT"
+
+[connection signal="pressed" from="PanelContainer/CenterContainerButtons/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="PanelContainer/CenterContainerButtons/VBoxContainer/ButtonHelp" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="PanelContainer/CenterContainerButtons/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]

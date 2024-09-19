@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dtdxe2taku8d8"]
 
-[ext_resource type="Script" path="res://scripts/board.gd" id="1_d3eei"]
+[ext_resource type="Script" path="res://scripts/puzzle/board.gd" id="1_d3eei"]
 [ext_resource type="PackedScene" uid="uid://cge4lsokkt3cn" path="res://scenes/puzzle/tile.tscn" id="1_kad2v"]
 [ext_resource type="PackedScene" uid="uid://2rp3m4kv7bdv" path="res://scenes/puzzle/empty_tile.tscn" id="3_jnlbs"]
 

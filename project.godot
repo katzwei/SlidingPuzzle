@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SlidingPuzzle"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="res://scenes/ui/start.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,12 @@ config/icon="res://icon.svg"
 
 Debug="*res://singletons/debug.gd"
 Global="*res://singletons/global.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
 
 [editor]
 
