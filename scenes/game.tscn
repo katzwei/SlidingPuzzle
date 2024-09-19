@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c62krub3irbik"]
 
-[ext_resource type="PackedScene" uid="uid://dtdxe2taku8d8" path="res://scenes/board.tscn" id="1_ilxur"]
+[ext_resource type="PackedScene" uid="uid://dtdxe2taku8d8" path="res://scenes/puzzle/board.tscn" id="1_ilxur"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_rte3e"]
 
 [node name="Game" type="Node"]
