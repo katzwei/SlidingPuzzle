@@ -9,7 +9,7 @@ signal solved
 
 var puzzle := [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,EMPTY_VALUE] as Array[int]
 var solution := puzzle.duplicate()
-var empty_tile_index := puzzle.size() - 1
+var empty_piece_index := puzzle.size() - 1
 
 const WIDTH = 4
 const HEIGHT = 4
@@ -54,33 +54,33 @@ func swap_puzzle_pieces(index_a: int, index_b: int) -> void:
 	puzzle[index_b] = first_value
 
 
-func swap_tile_with_empty(value: int) -> void:
+func swap_piece_with_empty(value: int) -> void:
 	var index := puzzle.find(value)
-	swap_puzzle_pieces(index, empty_tile_index)
-	empty_tile_index = index
+	swap_puzzle_pieces(index, empty_piece_index)
+	empty_piece_index = index
 	if puzzle == solution:
 		solved.emit()
 
 
 func shuffle(steps: int) -> void:
-	var last_piece_index := empty_tile_index
+	var last_piece_index := empty_piece_index
 	# play n random moves
 	for n in range(steps):
-		var pieces := get_surrounding_pieces(empty_tile_index, WIDTH, HEIGHT)
+		var pieces := get_surrounding_pieces(empty_piece_index, WIDTH, HEIGHT)
 		if pieces.has(last_piece_index):
 			pieces.erase(last_piece_index)
 		var piece_index := pieces[randi_range(0, pieces.size() - 1)]
-		swap_puzzle_pieces(empty_tile_index, piece_index)
-		last_piece_index = empty_tile_index
-		empty_tile_index = piece_index
+		swap_puzzle_pieces(empty_piece_index, piece_index)
+		last_piece_index = empty_piece_index
+		empty_piece_index = piece_index
 		
 	# move the empty tile back to its starting point
-	while empty_tile_index < puzzle.size() - 1:
-		var piece_index := get_down_piece(empty_tile_index, WIDTH, HEIGHT, empty_tile_index / HEIGHT)
+	while empty_piece_index < puzzle.size() - 1:
+		var piece_index := get_down_piece(empty_piece_index, WIDTH, HEIGHT, empty_piece_index / HEIGHT)
 		if piece_index < 0:
-			piece_index = get_right_piece(empty_tile_index, WIDTH, empty_tile_index % WIDTH)
-		swap_puzzle_pieces(empty_tile_index, piece_index)
-		empty_tile_index = piece_index
+			piece_index = get_right_piece(empty_piece_index, WIDTH, empty_piece_index % WIDTH)
+		swap_puzzle_pieces(empty_piece_index, piece_index)
+		empty_piece_index = piece_index
 
 
 func reset() -> void:

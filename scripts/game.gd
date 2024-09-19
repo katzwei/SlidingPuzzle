@@ -4,7 +4,7 @@ extends Node
 
 
 func _ready() -> void:
-	Global.tile_moved.connect(board.swap_tile_with_empty)
+	Global.tile_moved.connect(board.swap_piece_with_empty)
 	board.set_easy()
 
 
