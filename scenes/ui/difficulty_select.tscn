@@ -1,9 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://0an6p1c52dhv"]
+[gd_scene load_steps=4 format=3 uid="uid://0an6p1c52dhv"]
 
 [ext_resource type="Script" path="res://scripts/ui/difficulty_select.gd" id="1_ipfl8"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7cahr"]
-bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+[ext_resource type="StyleBox" uid="uid://bj0wc13pg6ntv" path="res://styles/panel_background.tres" id="2_jo2cl"]
+[ext_resource type="PackedScene" uid="uid://d17s8jf58v2ga" path="res://scenes/ui/message.tscn" id="3_hen6o"]
 
 [node name="DifficultySelect" type="Control"]
 layout_mode = 3
@@ -21,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_7cahr")
+theme_override_styles/panel = ExtResource("2_jo2cl")
 
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -49,6 +48,35 @@ text = "NORMAL"
 [node name="ButtonHard" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "HARD"
+
+[node name="CenterContainerMessage" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+size_flags_vertical = 0
+
+[node name="Message" parent="CenterContainerMessage" node_paths=PackedStringArray("target_in", "target_out") instance=ExtResource("3_hen6o")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "where's the cat?"
+slide_out = true
+target_in = NodePath("../ControlMessageTargetIn/Marker2D")
+target_out = NodePath("../ControlMessageTargetOut/Marker2D")
+
+[node name="ControlMessageTargetIn" type="Control" parent="CenterContainerMessage"]
+layout_mode = 2
+
+[node name="Marker2D" type="Marker2D" parent="CenterContainerMessage/ControlMessageTargetIn"]
+position = Vector2(0, 100)
+
+[node name="ControlMessageTargetOut" type="Control" parent="CenterContainerMessage"]
+layout_mode = 2
+
+[node name="Marker2D" type="Marker2D" parent="CenterContainerMessage/ControlMessageTargetOut"]
 
 [connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/ButtonEasy" to="." method="_on_button_easy_pressed"]
 [connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/ButtonNormal" to="." method="_on_button_normal_pressed"]

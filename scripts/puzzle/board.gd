@@ -1,25 +1,32 @@
 class_name Board
 extends Node2D
 
+
 signal solved
+
 
 @onready var tiles: CanvasGroup = $Tiles
 @onready var empty_tile: EmptyTile = $EmptyTile
-@onready var tilesArray = tiles.get_children() as Array[Tile]
+@onready var tiles_array = tiles.get_children() as Array[Tile]
+
 
 var puzzle := [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,EMPTY_VALUE] as Array[int]
 var solution := puzzle.duplicate()
 var empty_piece_index := puzzle.size() - 1
 
+
 const WIDTH = 4
 const HEIGHT = 4
 const EMPTY_VALUE = 16
-
+const EASY_STEP_COUNT = 8
+const EASY_NORMAL_COUNT = 16
+const EASY_HARD_COUNT = 24
 
 func set_puzzle() -> void:
-	for index in range(tilesArray.size()):
-		var tile: Tile = tilesArray[index]
+	for index in range(tiles_array.size()):
+		var tile: Tile = tiles_array[index]
 		tile.set_value(puzzle[index] - 1)
+
 
 func get_left_piece(z, x) -> int:
 	return -1 if x == 0 else z - 1
@@ -89,18 +96,22 @@ func reset() -> void:
 
 
 func set_easy() -> void:
-	shuffle(8)
+	shuffle(EASY_STEP_COUNT)
 	set_puzzle()
 
 
 func set_normal() -> void:
-	shuffle(15)
+	shuffle(EASY_NORMAL_COUNT)
 	set_puzzle()
 
 
 func set_hard() -> void:
-	shuffle(25)
+	shuffle(EASY_HARD_COUNT)
 	set_puzzle()
+
+func use_secret_board() -> void:
+	for tile in tiles_array:
+		tile.use_secret_tile()
 
 
 func _ready() -> void:

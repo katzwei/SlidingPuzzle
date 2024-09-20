@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://2rp3m4kv7bdv"]
 
-[ext_resource type="Texture2D" uid="uid://cub3hsudkoyak" path="res://assets/cursor.png" id="1_oeilr"]
+[ext_resource type="Texture2D" uid="uid://cub3hsudkoyak" path="res://assets/images/cursor.png" id="1_oeilr"]
 [ext_resource type="Script" path="res://scripts/puzzle/empty_tile.gd" id="1_ypoyl"]
 
 [node name="EmptyTile" type="Node2D"]

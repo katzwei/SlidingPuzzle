@@ -23,12 +23,12 @@ func go_to_game() -> void:
 	_go_to_scene("res://scenes/game.tscn")
 
 
-func go_to_help() -> void:
-	_go_to_scene("res://scenes/ui/help.tscn")
-
-
 func go_to_start() -> void:
 	_go_to_scene("res://scenes/ui/start.tscn")
+
+
+func reload() -> void:	
+	get_tree().reload_current_scene()
 
 
 func quit() -> void:

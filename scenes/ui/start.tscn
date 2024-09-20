@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwek1i3if2hsi"]
+[gd_scene load_steps=3 format=3 uid="uid://dwek1i3if2hsi"]
 
 [ext_resource type="Script" path="res://scripts/ui/start.gd" id="1_v28r7"]
+[ext_resource type="PackedScene" uid="uid://b5rnyv7trml80" path="res://scenes/ui/help.tscn" id="2_ophdg"]
 
 [node name="Start" type="Control"]
 layout_mode = 3
@@ -49,6 +50,11 @@ text = "HELP"
 [node name="ButtonQuit" type="Button" parent="PanelContainer/CenterContainerButtons/VBoxContainer"]
 layout_mode = 2
 text = "QUIT"
+
+[node name="Help" parent="." instance=ExtResource("2_ophdg")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="PanelContainer/CenterContainerButtons/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="PanelContainer/CenterContainerButtons/VBoxContainer/ButtonHelp" to="." method="_on_button_options_pressed"]

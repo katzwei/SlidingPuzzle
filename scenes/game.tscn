@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://c62krub3irbik"]
+[gd_scene load_steps=8 format=3 uid="uid://c62krub3irbik"]
 
 [ext_resource type="PackedScene" uid="uid://dtdxe2taku8d8" path="res://scenes/puzzle/board.tscn" id="1_ilxur"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_rte3e"]
 [ext_resource type="PackedScene" uid="uid://b5cvuk4mhgfsq" path="res://scenes/ui/move_counter.tscn" id="3_hdl14"]
 [ext_resource type="PackedScene" uid="uid://0an6p1c52dhv" path="res://scenes/ui/difficulty_select.tscn" id="3_tjejp"]
 [ext_resource type="PackedScene" uid="uid://d2ds005c46bpw" path="res://scenes/ui/game_timer.tscn" id="4_4y1dm"]
+[ext_resource type="PackedScene" uid="uid://d17s8jf58v2ga" path="res://scenes/ui/message.tscn" id="5_2sgbo"]
+[ext_resource type="PackedScene" uid="uid://b5rnyv7trml80" path="res://scenes/ui/help.tscn" id="6_ibm5c"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_rte3e")
@@ -16,7 +18,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+[node name="CenterContainerBoard" type="CenterContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -26,7 +28,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Board" parent="Panel/CenterContainer" instance=ExtResource("1_ilxur")]
+[node name="Board" parent="Panel/CenterContainerBoard" instance=ExtResource("1_ilxur")]
 unique_name_in_owner = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
@@ -47,9 +49,36 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="CenterContainerMessage" type="CenterContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+
+[node name="Message" parent="Panel/CenterContainerMessage" node_paths=PackedStringArray("target_in") instance=ExtResource("5_2sgbo")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "you win!"
+target_in = NodePath("../ControlMessageTargetIn/Marker2D")
+
+[node name="ControlMessageTargetIn" type="Control" parent="Panel/CenterContainerMessage"]
+layout_mode = 2
+
+[node name="Marker2D" type="Marker2D" parent="Panel/CenterContainerMessage/ControlMessageTargetIn"]
+position = Vector2(0, 100)
+
 [node name="DifficultySelect" parent="." instance=ExtResource("3_tjejp")]
 
-[connection signal="solved" from="Panel/CenterContainer/Board" to="." method="_on_board_solved"]
+[node name="Help" parent="." instance=ExtResource("6_ibm5c")]
+visible = false
+show_quit_button = true
+show_reset_button = true
+
+[connection signal="solved" from="Panel/CenterContainerBoard/Board" to="." method="_on_board_solved"]
+[connection signal="enable_secret" from="DifficultySelect" to="." method="_on_difficulty_select_enable_secret"]
 [connection signal="select_easy" from="DifficultySelect" to="." method="_on_difficulty_select_select_easy"]
 [connection signal="select_hard" from="DifficultySelect" to="." method="_on_difficulty_select_select_hard"]
 [connection signal="select_normal" from="DifficultySelect" to="." method="_on_difficulty_select_select_normal"]
