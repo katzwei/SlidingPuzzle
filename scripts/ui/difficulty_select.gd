@@ -31,7 +31,6 @@ func _push_secret_input(value: String) -> void:
 	if secret_inputs.size() >= 3:
 		secret_inputs.pop_front()
 	secret_inputs.append(value)
-	print_debug(secret_inputs)
 	if "".join(secret_inputs) == secret:
 		message.slide_in()
 		enable_secret.emit()
