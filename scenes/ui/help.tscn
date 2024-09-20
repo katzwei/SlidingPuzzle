@@ -25,17 +25,24 @@ theme_override_styles/panel = ExtResource("2_gofwv")
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/CenterContainer"]
-custom_minimum_size = Vector2(500, 200)
+custom_minimum_size = Vector2(500, 350)
 layout_mode = 2
 bbcode_enabled = true
-text = "[center][u]how to play[/u]
+text = "[center]
+[u]how to play[/u]
 think fast and solve the puzzle in as few move as you can!
 
 [u]controls[/u]
 [b]up arrow[/b] [i]or[/i] [b]W[/b]
 [b]right arrow[/b] [i]or[/i] [b]A[/b]
 [b]down arrow[/b] [i]or[/i] [b]S[/b]
-[b]left arrow[/b] [i]or[/i] [b]D[/b][/center]"
+[b]left arrow[/b] [i]or[/i] [b]D[/b]
+
+[u]credits[/u]
+the game: a cat
+tile audio: Kenney Game Assets (FoleySounds - stoneDragHit1)
+secret tileset (there's a secret tileset??): spookyfoxinc@twitter
+[/center]"
 
 [node name="CenterContainerBack" type="CenterContainer" parent="PanelContainer"]
 layout_mode = 2
